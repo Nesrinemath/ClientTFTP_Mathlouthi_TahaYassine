@@ -15,3 +15,5 @@ We'll be implementing new functionalities as we go along._
 
 **STEP 1**: Use the arguments passed on the command line of the gettftp and
 puttftp programs to obtain request information (server and file)
+
+**STEP 2**: 

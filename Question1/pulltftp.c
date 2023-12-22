@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv) {
+/*int main(int argc, char **argv) {
     // Check if the correct number of command-line arguments is provided
     if (argc != 4) {
         // Display an error message and exit the program with success status
@@ -19,4 +19,4 @@ int main(int argc, char **argv) {
 
     // Return 0 to indicate successful execution
     return 0;
-}
+}*/
