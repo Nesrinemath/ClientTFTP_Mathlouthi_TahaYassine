@@ -8,6 +8,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <string.h>
+#include <arpa/inet.h>
 
 /*int main(int argc, char **argv) {
     // Check if the correct number of command-line arguments is provided
@@ -39,13 +40,34 @@
 
     // Further code for using the result of address resolution would typically go here
 
-   int status = getaddrinfo(argv[2], argv[3], &hints, &result);
-if (status != 0) {
-    printf("we can't find the host %s\n", argv[2]);
-} else {
-    // Loop through the results and print IP addresses
-    struct addrinfo *p;
-    char ipstr[INET_ADDRSTRLEN];
 
-    return 0;
+    if (status != 0) {
+        printf("we can't find the host %s\n", argv[2]);
+    } else {
+        // Loop through the results and print IP addresses
+        struct addrinfo *p;
+        char ipstr[INET_ADDRSTRLEN];
+    }
+
+    Loop through the results and print IP addresses
+        struct addrinfo *p;
+        char ipstr[INET_ADDRSTRLEN];
+        for (p = result; p != NULL; p = p->ai_next) {
+            void *addr;
+            if (p->ai_family == AF_INET) { // IPv4
+                struct sockaddr_in *ipv4 = (struct sockaddr_in *) p->ai_addr;
+                if (status != 0) {
+        printf("we can't find the host %s\n", argv[2]);
+    } else {
+        // addr = &(ipv4->sin_addr);
+            } else { // IPv6
+                struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *) p->ai_addr;
+                addr = &(ipv6->sin6_addr);
+            }
+            // Convert the IP to a string and print it
+            inet_ntop(p->ai_family, addr, ipstr, sizeof(ipstr));
+            printf("IP Address: %s\n", ipstr);
+        }
+        freeaddrinfo(result); // Free the memory allocated for address information
+    }
 }*/
